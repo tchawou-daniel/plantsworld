@@ -1,6 +1,7 @@
 package com.sdjt.plantsworld
 
 class PlantModel (
+        val id: String = "plant2",
         val name: String = "Tulipe",
         val description: String = "Petite description",
         //plante par defaut s'il y'a un pb
