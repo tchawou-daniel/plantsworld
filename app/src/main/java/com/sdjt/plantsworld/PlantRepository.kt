@@ -47,4 +47,7 @@ class PlantRepository {
     fun updatePlant(plant: PlantModel){
         Singleton.databaseRef.child(plant.id).setValue(plant)
     }
+
+    //supprimer une plante de la base
+    fun deletePlant(plant: PlantModel) = Singleton.databaseRef.child(plant.id).removeValue()
 }

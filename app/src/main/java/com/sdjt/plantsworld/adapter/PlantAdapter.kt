@@ -8,14 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.sdjt.plantsworld.MainActivity
-import com.sdjt.plantsworld.PlantModel
-import com.sdjt.plantsworld.PlantRepository
-import com.sdjt.plantsworld.R
+import com.sdjt.plantsworld.*
 
 //quatrième partie fini  2h01min
-                        //class déjà compris dans android donc on a recrée cela
- class PlantAdapter(private val context:MainActivity, private val plantList: List<PlantModel>, private val layoutId: Int) : RecyclerView.Adapter<PlantAdapter.ViewHolder>() {
+//class déjà compris dans android donc on a recrée cela
+class PlantAdapter(val context:MainActivity, private val plantList: List<PlantModel>, private val layoutId: Int) : RecyclerView.Adapter<PlantAdapter.ViewHolder>() {
     //boite pour ranger tout les composants à controler
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         //image de la plante
@@ -29,8 +26,8 @@ import com.sdjt.plantsworld.R
     //permet d'injecter le composant comme pour le fragment
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater
-                .from(parent.context)
-                .inflate(layoutId, parent, false)
+            .from(parent.context)
+            .inflate(layoutId, parent, false)
 
         return ViewHolder(view)
     }
@@ -64,6 +61,12 @@ import com.sdjt.plantsworld.R
             currentPlant.liked = !currentPlant.liked
             //mettre à jour l'objet plante
             repo.updatePlant(currentPlant)
+        }
+
+        //interaction lors du clique sur une plante
+        holder.itemView.setOnClickListener{
+            //afficher la popup
+            PlantPopup(this, currentPlant).show()
         }
     }
 
