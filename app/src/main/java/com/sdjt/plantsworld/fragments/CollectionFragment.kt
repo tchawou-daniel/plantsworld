@@ -19,25 +19,15 @@ import java.util.zip.Inflater
 class CollectionFragment( private val context: MainActivity ) : Fragment()  {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-       // val view = inflater?.inflate(R.layout.fragment_home, container, false)
 
         val view = inflater?.inflate(R.layout.fragment_collection, container, false)
 
         // recuperer le recycler view
         val collectionRecyclerView = view.findViewById<RecyclerView>(R.id.collection_recycler_list)
-
-        collectionRecyclerView.adapter = PlantAdapter(context, plantList,R.layout.item_vertical_plant)
+        collectionRecyclerView.adapter = PlantAdapter(context, plantList.filter{ it.liked },R.layout.item_vertical_plant)
         collectionRecyclerView.layoutManager = LinearLayoutManager(context)
-        // recuperer le recycler view
-        //val horizontalRecyclerView = view.findViewById<RecyclerView>(R.id.horizontal_recycler_view)
-        //dire quel layout a utiliser en envoyant un parametre
-        //horizontalRecyclerView.adapter = PlantAdapter(context,
-        //    PlantRepository.Singleton.plantList, R.layout.item_horizontal_plant)
+        collectionRecyclerView.addItemDecoration(PlantItemdecoration())
 
-        // recuperer le second recyclerview
-        //val verticalRecyclerView = view.findViewById<RecyclerView>(R.id.vertical_recycler_view)
-        //verticalRecyclerView.adapter = PlantAdapter(context, plantList, R.layout.item_vertical_plant)
-       // verticalRecyclerView.addItemDecoration(PlantItemdecoration())
 
         return view
     }

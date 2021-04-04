@@ -2,6 +2,8 @@ package com.sdjt.plantsworld
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.sdjt.plantsworld.fragments.AddPlantFragment
+import com.sdjt.plantsworld.fragments.CollectionFragment
 import com.sdjt.plantsworld.fragments.Homefragment
 
 class MainActivity : AppCompatActivity() {
